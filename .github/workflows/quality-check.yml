@@ -1,26 +1,31 @@
-  
 name: Quality Check
 
 on: [push]
 
 jobs:
-  build:
-
+  Lint and Test:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python 3.9
-      uses: actions/setup-python@v1
-      with:
-        python-version: 3.9
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip pipenv
-        pipenv install --pre
-    - name: Analyzing the code with black
-      run: |
-        pipenv run lint
-    - name: testing the code with Behave
-      run: |
-        pipenv run test
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.9
+      - name: Install pipenv
+        run: |
+          python pip install pipenv
+      - name: Cache pipenv virtualenv
+        id: cache-pipenv
+        uses: actions/cache@v1
+        with:
+          path: ~/.local/share/virtualenvs
+          key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
+      - name: Install Dependencies
+        if: steps.cache-pipenv.outputs.cache-hit != 'true'
+        run: pipenv install
+      - name: Analyzing the code with black
+        run: |
+          pipenv run lint --check
+      - name: testing the code with Behave
+        run: |
+          pipenv run test
