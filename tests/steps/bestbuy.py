@@ -11,7 +11,7 @@ from src import bestbuy
 
 @given('I am on the BestBuy homepage')
 def step(context):
-    context.BestBuy = bestbuy.BestBuy()
+    context.Sniper = bestbuy.Sniper()
     pass
 
 
@@ -28,7 +28,7 @@ def enter_item_name(context, product: str):
 
 @when(u'I call hello "{name}"')
 def step_impl(context, name: str):
-    context.result = context.BestBuy.hello(name)
+    context.result = context.Sniper.hello(name)
 
 
 @then(u'"{expected}" should be returned')

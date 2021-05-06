@@ -5,7 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-class BestBuy:
+class Sniper:
     def __init__(self, url: str = None):
         self.url = url if url != None else "https://bestbuy.com"
 
