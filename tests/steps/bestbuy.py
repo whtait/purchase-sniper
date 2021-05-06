@@ -9,7 +9,7 @@
 from src import bestbuy
 
 
-@given('I am on the BestBuy homepage')
+@given("I am on the BestBuy homepage")
 def step(context):
     context.Sniper = bestbuy.Sniper()
     pass
@@ -26,11 +26,11 @@ def enter_item_name(context, product: str):
     pass
 
 
-@when(u'I call hello "{name}"')
+@when('I call hello "{name}"')
 def step_impl(context, name: str):
     context.result = context.Sniper.hello(name)
 
 
-@then(u'"{expected}" should be returned')
+@then('"{expected}" should be returned')
 def step_impl(context, expected: str):
     assert context.result == expected, f"Expected [{expected}] Got [{context.result}]"
