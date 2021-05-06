@@ -19,3 +19,4 @@ This repo will (hopefully) snipe the purchase out from under those deviants.
 
 - [TreborNamor/Agressive-Store-Bots](https://github.com/TreborNamor/Agressive-Store-Bots)
 - [Web Scraping with Python – A Beginner’s Guide in 2021](https://zenscrape.com/web-scraping-with-python/)
+- [Serverless Python deployments with Github Actions](https://ianwhitestone.work/aws-serverless-deployments-with-github-actions/)
