@@ -3,7 +3,7 @@ name: Quality Check
 on: [push]
 
 jobs:
-  Lint and Test:
+  Lint_and_Test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
