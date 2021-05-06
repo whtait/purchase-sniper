@@ -11,7 +11,9 @@ from src import bestbuy
 
 @given("I am on the BestBuy homepage")
 def step(context):
-    context.Sniper = bestbuy.Sniper()
+    context.Sniper = bestbuy.Sniper(
+        "https://www.bestbuy.com/site/6429440.p?skuId=6429440"
+    )
     pass
 
 
