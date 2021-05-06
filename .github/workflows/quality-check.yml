@@ -1,0 +1,26 @@
+  
+name: Quality Check
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.9
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip pipenv
+        pipenv install
+    - name: Analyzing the code with black
+      run: |
+        pipenv run lint
+    - name: testing the code with Behave
+      run: |
+        pipenv run test
