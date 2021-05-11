@@ -8,14 +8,17 @@
 
 from src import bestbuy
 
+
 @given('I provide the SKU "{providedSKU}".')
 def provideSku(context, providedSKU: str):
     context.sku = providedSKU
     pass
 
-@when('I instantiate the class with the SKU.')
+
+@when("I instantiate the class with the SKU.")
 def instantiateSniperClass(context):
     context.sniper = bestbuy.Sniper(context.sku)
+
 
 @then('I am given a custom URL "{providedCustomURL}" linking to the product page.')
 def returnUrl(context, providedCustomURL: str):

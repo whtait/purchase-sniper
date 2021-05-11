@@ -3,6 +3,14 @@
 I want to buy a graphics card but need to outperform the scalper bots.
 This repo will (hopefully) snipe the purchase out from under those deviants.
 
+## Setup
+
+How do I set this up? You run the following commands.
+
+```sh
+pipenv install --dev
+```
+
 ## Resources
 
 ### Python
