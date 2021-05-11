@@ -6,8 +6,8 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class Sniper:
-    def __init__(self, url: str = None):
-        self.url = url if url != None else "https://bestbuy.com"
+    def __init__(self, sku: str = None):
+        self.sku = sku if sku != None else "6430620"
 
-    def hello(self, name: str) -> str:
-        return f"Hello, {name}!"
+    def returnUrl(self):
+        return f"https://www.bestbuy.com/site/{self.sku}.p?skuId={self.sku}"

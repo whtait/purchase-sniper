@@ -8,31 +8,17 @@
 
 from src import bestbuy
 
-
-@given("I am on the BestBuy homepage")
-def step(context):
-    context.Sniper = bestbuy.Sniper(
-        "https://www.bestbuy.com/site/6429440.p?skuId=6429440"
-    )
+@given('I provide the SKU "{providedSKU}".')
+def provideSku(context, providedSKU: str):
+    context.sku = providedSKU
     pass
 
+@when('I instantiate the class with the SKU.')
+def instantiateSniperClass(context):
+    context.sniper = bestbuy.Sniper(context.sku)
 
-@when('I enter search for "{product}"')
-def click_on_checkbox_one(context, product: str):
-    pass
-
-
-@then('Search results for "{product}" should appear')
-def enter_item_name(context, product: str):
-    assert product == "Bees"
-    pass
-
-
-@when('I call hello "{name}"')
-def step_impl(context, name: str):
-    context.result = context.Sniper.hello(name)
-
-
-@then('"{expected}" should be returned')
-def step_impl(context, expected: str):
-    assert context.result == expected, f"Expected [{expected}] Got [{context.result}]"
+@then('I am given a custom URL "{providedCustomURL}" linking to the product page.')
+def returnUrl(context, providedCustomURL: str):
+    actualUrl = context.sniper.returnUrl()
+    expectedUrl = providedCustomURL
+    assert actualUrl == expectedUrl, f"Expected [{expectedUrl}] Got [{actualUrl}]"

@@ -1,10 +1,6 @@
-Feature: Best buy search
-Scenario: Search for product on best buy
-    Given I am on the BestBuy homepage
-    When I enter search for "Bees"
-    Then Search results for "Bees" should appear
+Feature: The bot can navigate BestBuy's website.
 
-Scenario: Say hello to you
-    Given I am on the BestBuy homepage
-    When I call hello "there"
-    Then "Hello, there!" should be returned
+Scenario: I am searching for a specific SKU.
+    Given I provide the SKU "6430620".
+    When I instantiate the class with the SKU.
+    Then I am given a custom URL "https://www.bestbuy.com/site/6430620.p?skuId=6430620" linking to the product page.
