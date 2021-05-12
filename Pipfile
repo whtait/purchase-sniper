@@ -8,6 +8,15 @@ selenium = "*"
 beautifulsoup4 = "*"
 
 [dev-packages]
+behave = "*"
+black = "*"
 
 [requires]
 python_version = "3.9"
+
+[scripts]
+test = "behave ./tests"
+lint = "black ."
+
+[pipenv]
+allow_prereleases = true
