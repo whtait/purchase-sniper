@@ -14,14 +14,14 @@ jobs:
       - name: Install pipenv
         run: |
           pip install pipenv
-      - name: Cache pipenv virtualenv
-        id: cache-pipenv
-        uses: actions/cache@v1
-        with:
-          path: ~/.local/share/virtualenvs
-          key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
+      # - name: Cache pipenv virtualenv
+      #   id: cache-pipenv
+      #   uses: actions/cache@v1
+      #   with:
+      #     path: ~/.local/share/virtualenvs
+      #     key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
       - name: Install Dependencies
-        if: steps.cache-pipenv.outputs.cache-hit != 'true'
+        # if: steps.cache-pipenv.outputs.cache-hit != 'true'
         run: pipenv install --dev
       - name: Analyzing the code with Black
         run: |
