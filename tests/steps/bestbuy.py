@@ -20,8 +20,12 @@ def instantiateSniperClass(context):
     context.sniper = bestbuy.Sniper(context.sku)
 
 
-@then('I am given a custom URL "{providedCustomURL}" linking to the product page.')
-def returnUrl(context, providedCustomURL: str):
-    actualUrl = context.sniper.returnUrl()
-    expectedUrl = providedCustomURL
-    assert actualUrl == expectedUrl, f"Expected [{expectedUrl}] Got [{actualUrl}]"
+@then('I am given a custom URL "{expected}" linking to the product page.')
+def returnUrl(context, expected: str):
+    actual = context.sniper.pointToURL()
+    assert actual == expected, f"Expected [{expected}] Got [{actual}]"
+
+@then('I expect the returned price to be "{expected}"')
+def checkPrice(context, expected: str):
+    actual = context.sniper.getProductPrice()
+    assert actual == expected, f"Expected [{expected}] Got [{actual}]"

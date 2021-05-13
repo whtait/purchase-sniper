@@ -4,3 +4,8 @@ Scenario: I am searching for a specific SKU.
     Given I provide the SKU "6430620".
     When I instantiate the class with the SKU.
     Then I am given a custom URL "https://www.bestbuy.com/site/6430620.p?skuId=6430620" linking to the product page.
+
+Scenario: I am requesting a price.
+    Given I provide the SKU "6430620".
+    When I instantiate the class with the SKU.
+    Then I expect the returned price to be "$1,079.99"
