@@ -9,6 +9,7 @@ import os
 
 load_dotenv()
 
+
 class Sniper:
     def __init__(self, sku: str = None):
         self.sku = sku if sku != None else "6430620"
@@ -17,7 +18,7 @@ class Sniper:
         return f"https://www.bestbuy.com/site/{self.sku}.p?skuId={self.sku}"
 
     def getProductPrice(self):
-        driver = webdriver.Chrome(os.getenv('chromiumPath'))
+        driver = webdriver.Chrome(os.getenv("chromiumPath"))
         driver.get(self.pointToURL())
         price = driver.findElement(By.cssSelector(".priceView-hero-price")).text
         return price

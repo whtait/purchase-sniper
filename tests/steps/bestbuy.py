@@ -25,6 +25,7 @@ def returnUrl(context, expected: str):
     actual = context.sniper.pointToURL()
     assert actual == expected, f"Expected [{expected}] Got [{actual}]"
 
+
 @then('I expect the returned price to be "{expected}"')
 def checkPrice(context, expected: str):
     actual = context.sniper.getProductPrice()
